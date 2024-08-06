@@ -1,6 +1,6 @@
 FROM maven:3.9-amazoncorretto-17-al2023 as mvn-build
 COPY pom.xml /build
-RUN mvn -e -B dependency:resolve dependency:resolve-plugins
+RUN mvn -e -B dependency:resolve
 COPY src /build/src
 RUN mvn clean package -DskipTests && ls -lath /build/target
 
