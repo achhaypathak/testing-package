@@ -26,6 +26,7 @@ jobs:
                 file: ./Dockerfile
                 push: true
                 tags: achhaypathak/test-package:latest
+                secrets: GITHUB_TOKEN = ${{ secrets.GITHUB_TOKEN }}
 
             - name: Verify Pushed Image
               run: docker pull achhaypathak/test-package:latest
