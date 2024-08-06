@@ -10,7 +10,7 @@
     <repositories>
         <repository>
             <id>github</id>
-            <url>https://maven.pkg.github.com/achhaypathak/java-package</url>
+            <url>https://maven.pkg.github.com/achhaypathak/java-package-2</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -25,7 +25,7 @@
     <dependencies>
         <dependency>
             <groupId>com.gistimpact</groupId>
-            <artifactId>loggerjava1729</artifactId>
+            <artifactId>loggerjava</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
