@@ -1,10 +1,11 @@
 FROM maven:3.9-amazoncorretto-17-al2023 as mvn-build
 
 # ARG GITHUB_ACTOR
-# ARG GITHUB_TOKEN
+ARG GITHUB_TOKEN
 
 # RUN mkdir -p /root/.m2
 # RUN echo "<settings><servers><server><id>github</id><username>$GITHUB_ACTOR</username><password>$GITHUB_TOKEN</password></server></servers></settings>" > /root/.m2/settings.xml
+RUN --mount=type=secret,id=GITHUB_TOKEN export GITHUB_TOKEN=$(cat /run/secrets/GITHUB_TOKEN) 
 
 RUN mkdir -p /build
 WORKDIR /build
