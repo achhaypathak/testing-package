@@ -2,6 +2,8 @@ FROM maven:3.9-amazoncorretto-17-al2023 as mvn-build
 RUN mkdir -p /build
 WORKDIR /build
 COPY pom.xml /build
+ARG GITHUB_ACTOR
+ARG GITHUB_TOKEN
 RUN echo "GitHub Actor: $GITHUB_ACTOR"
 RUN echo "GitHub Token: $GITHUB_TOKEN"
 RUN mvn clean install
