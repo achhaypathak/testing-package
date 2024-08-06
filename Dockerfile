@@ -1,6 +1,6 @@
 FROM maven:3.9-amazoncorretto-17-al2023 as mvn-build
 COPY pom.xml /build
-RUN mvn -e -B dependency:resolve
+RUN mvn clean install
 COPY src /build/src
 RUN mvn clean package -DskipTests && ls -lath /build/target
 
