@@ -9,6 +9,8 @@ RUN --mount=type=secret,id=GITHUB_TOKEN export GITHUB_TOKEN=$(cat /run/secrets/G
 
 ENV GITHUB_TOKEN=$GITHUB_TOKEN
 
+RUN echo $GITHUB_TOKEN
+
 RUN mkdir -p /build
 WORKDIR /build
 COPY pom.xml /build
