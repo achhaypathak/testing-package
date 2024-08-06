@@ -2,7 +2,9 @@ FROM maven:3.9-amazoncorretto-17-al2023 as mvn-build
 RUN mkdir -p /build
 WORKDIR /build
 COPY pom.xml /build
-RUN mvn clean install -Dgithub.token=${GITHUB_TOKEN}
+RUN echo "GitHub Actor: $GITHUB_ACTOR"
+RUN echo "GitHub Token: $GITHUB_TOKEN"
+RUN mvn clean install
 COPY src /build/src
 RUN mvn clean package -DskipTests && ls -lath /build/target
 
