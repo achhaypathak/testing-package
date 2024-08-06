@@ -26,6 +26,7 @@ jobs:
                 file: ./Dockerfile
                 push: true
                 tags: achhaypathak/test-package:latest
+                github-token: ${{ secrets.GITHUB_TOKEN }}
                 build-args: |
                   GITHUB_ACTOR=${{ github.actor }}
                   GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
