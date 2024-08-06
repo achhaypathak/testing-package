@@ -31,11 +31,13 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Authenticate to GitHub Packages
-      run: echo "<settings><servers><server><id>github</id><username>${{ github.actor }}</username><password>${{ secrets.GT_TOKEN }}</password></server></servers></settings>" > $HOME/.m2/settings.xml
+    # - name: Authenticate to GitHub Packages
+    #   run: echo "<settings><servers><server><id>github</id><username>${{ github.actor }}</username><password>${{ secrets.GT_TOKEN }}</password></server></servers></settings>" > $HOME/.m2/settings.xml
       
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
