@@ -6,6 +6,7 @@ ARG GITHUB_ACTOR
 ARG GITHUB_TOKEN
 RUN echo "GitHub Actor: $GITHUB_ACTOR"
 RUN echo "GitHub Token: $GITHUB_TOKEN"
+ENV GITHUB_TOKEN=$GITHUB_TOKEN
 RUN mvn clean install
 COPY src /build/src
 RUN mvn clean package -DskipTests && ls -lath /build/target
