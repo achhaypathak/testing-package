@@ -23,7 +23,7 @@ COPY src /build/src
 RUN mvn clean package -DskipTests && ls -lath /build/target
 
 # Run our service using Amazon Corretto. Corretto gives free Java security updates
-FROM java:21
+FROM amazoncorretto:21-al2023
 
 COPY --from=mvn-build /build/target/test-1.0-SNAPSHOT.jar /app/test.jar
 CMD ["java", "-jar", "test.jar"]
