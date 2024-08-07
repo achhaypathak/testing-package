@@ -1,6 +1,6 @@
 FROM achhaypathak/maven:latest
 
-# # ARG GITHUB_ACTOR
+# ARG GITHUB_ACTOR
 # ARG GITHUB_TOKEN
 
 # # RUN mkdir -p /root/.m2
@@ -12,6 +12,8 @@ FROM achhaypathak/maven:latest
 # RUN echo $GITHUB_TOKEN && env
 
 COPY pom.xml /build
+
+RUN env
 
 RUN mvn clean install
 COPY src /build/src
