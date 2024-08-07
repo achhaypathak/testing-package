@@ -1,4 +1,4 @@
-FROM achhaypathak/maven:latest
+FROM achhaypathak/maven:latest AS mvn-build
 
 ARG GITHUB_ACTOR
 ARG GITHUB_TOKEN
@@ -23,7 +23,7 @@ COPY src /build/src
 RUN mvn clean package -DskipTests && ls -lath /build/target
 
 # Run our service using Amazon Corretto. Corretto gives free Java security updates
-# FROM java:21
+FROM java:21
 
-# COPY --from=mvn-build /build/target/capital-service-0.0.1-SNAPSHOT.jar /app/capital-service.jar
-# CMD ["java", "-jar", "capital-service.jar"]
+COPY --from=mvn-build /build/target/test-1.0-SNAPSHOT.jar /app/test.jar
+CMD ["java", "-jar", "test.jar"]
