@@ -18,7 +18,7 @@ COPY pom.xml /build
 
 RUN env
 
-RUN mvn clean install
+RUN mvn -e -B dependency:resolve dependency:resolve-plugins
 COPY src /build/src
 RUN mvn clean package -DskipTests && ls -lath /build/target
 
