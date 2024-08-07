@@ -43,6 +43,7 @@ jobs:
                 push: true
                 tags: achhaypathak/test-package:latest
                 secrets: |
+                    GITHUB_ACTOR=${{ github.actor }}
                     GITHUB_TOKEN=${{ secrets.GT_TOKEN }}
                 # github-token: ${{ secrets.GT_TOKEN }}
                 # build-args: |
