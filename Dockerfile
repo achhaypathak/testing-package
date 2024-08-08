@@ -1,10 +1,13 @@
 FROM achhaypathak/maven:latest AS mvn-build
 
-ARG GITHUB_ACTOR
-ARG GITHUB_TOKEN
+# ARG GITHUB_ACTOR
+# ARG GITHUB_TOKEN
 
-ENV GITHUB_ACTOR=${GITHUB_ACTOR}
-ENV GITHUB_TOKEN=${GITHUB_TOKEN}
+# ENV GITHUB_ACTOR=${GITHUB_ACTOR}
+# ENV GITHUB_TOKEN=${GITHUB_TOKEN}
+
+RUN --mount=type=secret,id=GITHUB_ACTOR export NODE_ENV=$(cat /run/secrets/GITHUB_ACTOR) 
+RUN --mount=type=secret,id=GITHUB_TOKEN export NODE_ENV=$(cat /run/secrets/GITHUB_TOKEN) 
 
 # # RUN mkdir -p /root/.m2
 # # RUN echo "<settings><servers><server><id>github</id><username>$GITHUB_ACTOR</username><password>$GITHUB_TOKEN</password></server></servers></settings>" > /root/.m2/settings.xml
