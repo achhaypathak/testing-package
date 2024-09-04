@@ -42,14 +42,14 @@ jobs:
                 file: ./Dockerfile
                 push: true
                 tags: achhaypathak/test-package:latest
-                secrets: |
-                  "GITHUB_ACTOR=${{ github.actor }}"
-                  "GITHUB_TOKEN=${{ secrets.GT_TOKEN }}"
+                # secrets: |
+                #   "GITHUB_ACTOR=${{ github.actor }}"
+                #   "GITHUB_TOKEN=${{ secrets.GT_TOKEN }}"
 
                 # github-token: ${{ secrets.GT_TOKEN }}
-                # build-args: |
-                #   GITHUB_ACTOR=${{ github.actor }}
-                #   GITHUB_TOKEN=${{ secrets.GT_TOKEN }}
+                build-args: |
+                  GITHUB_ACTOR=${{ github.actor }}
+                  GITHUB_TOKEN=${{ secrets.GT_TOKEN }}
 
             # - name: Verify Pushed Image
             #   run: docker pull achhaypathak/test-package:latest
