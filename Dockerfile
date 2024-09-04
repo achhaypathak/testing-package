@@ -6,8 +6,12 @@ FROM achhaypathak/maven:latest AS mvn-build
 # ENV GITHUB_ACTOR=${GITHUB_ACTOR}
 # ENV GITHUB_TOKEN=${GITHUB_TOKEN}
 
-RUN --mount=type=secret,id=GITHUB_ACTOR export GITHUB_ACTOR=$(cat /run/secrets/GITHUB_ACTOR) 
-RUN --mount=type=secret,id=GITHUB_TOKEN export GITHUB_TOKEN=$(cat /run/secrets/GITHUB_TOKEN) 
+# Set environment variables from secrets
+RUN --mount=type=secret,id=GITHUB_ACTOR \
+    --mount=type=secret,id=GITHUB_TOKEN \
+    export GITHUB_ACTOR=$(cat /run/secrets/GITHUB_ACTOR) && \
+    export GITHUB_TOKEN=$(cat /run/secrets/GITHUB_TOKEN)
+
 
 # RUN env
 # # RUN mkdir -p /root/.m2
