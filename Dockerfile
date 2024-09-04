@@ -1,16 +1,16 @@
 FROM achhaypathak/maven:latest AS mvn-build
 
-# ARG GITHUB_ACTOR
-# ARG GITHUB_TOKEN
+ARG GITHUB_ACTOR
+ARG GITHUB_TOKEN
 
-# ENV GITHUB_ACTOR=${GITHUB_ACTOR}
-# ENV GITHUB_TOKEN=${GITHUB_TOKEN}
+ENV GITHUB_ACTOR=${GITHUB_ACTOR}
+ENV GITHUB_TOKEN=${GITHUB_TOKEN}
 
 # Set environment variables from secrets
-RUN --mount=type=secret,id=GITHUB_ACTOR \
-    --mount=type=secret,id=GITHUB_TOKEN \
-    export GITHUB_ACTOR=$(cat /run/secrets/GITHUB_ACTOR) && \
-    export GITHUB_TOKEN=$(cat /run/secrets/GITHUB_TOKEN)
+# RUN --mount=type=secret,id=GITHUB_ACTOR \
+#     --mount=type=secret,id=GITHUB_TOKEN \
+#     export GITHUB_ACTOR=$(cat /run/secrets/GITHUB_ACTOR) && \
+#     export GITHUB_TOKEN=$(cat /run/secrets/GITHUB_TOKEN)
 
 
 # RUN env
